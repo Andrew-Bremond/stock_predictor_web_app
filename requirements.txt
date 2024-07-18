@@ -2,3 +2,6 @@ streamlit
 yfinance
 prophet
 plotly
+numpy
+pandas
+scikit-learn
