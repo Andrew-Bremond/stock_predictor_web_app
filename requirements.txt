@@ -1,7 +1,7 @@
 streamlit
 yfinance
-prophet
+prophet==1.1
 plotly
-numpy
+numpy==1.23.5
 pandas
 scikit-learn
