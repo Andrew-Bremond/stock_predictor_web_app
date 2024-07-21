@@ -1,6 +1,5 @@
-Cython
 cmdstanpy
-setuptools
+-e .
 streamlit
 yfinance
 prophet==1.1
@@ -8,3 +7,5 @@ plotly
 numpy==1.23.5
 pandas
 scikit-learn
+Cython
+setuptools
