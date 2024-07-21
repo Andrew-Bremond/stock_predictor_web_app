@@ -1,4 +1,3 @@
-cmdstanpy
 streamlit
 yfinance
 plotly
@@ -7,3 +6,5 @@ pandas
 scikit-learn
 Cython
 setuptools
+cmdstanpy==1.0.0
+prophet==1.1
