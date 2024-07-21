@@ -1,3 +1,5 @@
+--upgrade pip setuptools wheel
+cmdstanpy
 streamlit
 yfinance
 prophet==1.1
