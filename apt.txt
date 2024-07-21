@@ -1,2 +1,5 @@
 build-essential
 gcc
+g++
+make
+libpython3-dev
