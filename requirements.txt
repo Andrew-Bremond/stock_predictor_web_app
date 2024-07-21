@@ -1,6 +1,6 @@
 Cython
-setuptools
 cmdstanpy
+setuptools
 streamlit
 yfinance
 prophet==1.1
