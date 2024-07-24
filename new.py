@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 START = "2015-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.title("Stock Prediction App")
+st.title("Stock Prediction Web App")
 stocks = ("SPY", "NVDA", "AMD", "TSLA", "AAPL", "GOOG", "MSFT", "GME")
 selected_stock = st.selectbox("Select dataset for prediction", stocks)
 
