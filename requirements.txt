@@ -1,7 +1,7 @@
 streamlit
 yfinance
 plotly
-numpy==1.23.5
+numpy>=1.24
 pandas
 scikit-learn
 Cython
