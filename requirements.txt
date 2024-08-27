@@ -8,3 +8,4 @@ Cython
 setuptools
 cmdstanpy>=1.0.1
 prophet
+xgboost
