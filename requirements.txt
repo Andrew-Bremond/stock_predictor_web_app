@@ -1,11 +1,11 @@
 streamlit
 yfinance
 plotly
-numpy>=1.24
+numpy<2.0
 pandas
-scikit-learn
+scikit-learn>=1.2.0
 Cython
 setuptools
 cmdstanpy>=1.0.1
-prophet
+prophet>=1.0
 xgboost
