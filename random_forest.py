@@ -31,7 +31,7 @@ def random_forest_predictions(data):
     train = data.iloc[:-100]
     test = data.iloc[-100:]
 
-    model = RandomForestClassifier(n_estimators=200, min_samples_split=50, random_state=1)
+    model = RandomForestClassifier(n_estimators=200, min_samples_split=50, random_state=1, n_jobs=-1 )
 
     def predict(train, test, predictors, model):
         model.fit(train[predictors], train["Target"])

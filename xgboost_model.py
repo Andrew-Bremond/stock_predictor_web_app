@@ -8,8 +8,9 @@ from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error
 from plotly import graph_objs as go
 from datetime import timedelta
 
-def xgboost_predictions(data):
-    st.subheader('XGBoost Model Predictions')
+# Streamline Data Processing
+@st.cache_data
+def preprocess_data(data):
     data['Date'] = pd.to_datetime(data['Date'])
     data.set_index('Date', inplace=True)
    
@@ -25,7 +26,15 @@ def xgboost_predictions(data):
     data['Close_Lag2'] = data['Close'].shift(2)
     
     data.dropna(inplace=True)
+    
+    return data
 
+def xgboost_predictions(data):
+    st.subheader('XGBoost Model Predictions')
+    
+    # Preprocess data
+    data = preprocess_data(data)
+    
     features = ['Open', 'Volume', 'DayOfWeek', 'Month', 'Year', 'HighLowDiff', 'CloseOpenDiff', 'Close_Lag1', 'Close_Lag2']
     target = 'Close'
     
@@ -37,7 +46,7 @@ def xgboost_predictions(data):
     train_data[features] = scaler.fit_transform(train_data[features])
     test_data[features] = scaler.transform(test_data[features])
     
-    model = xgb.XGBRegressor(n_estimators=200, learning_rate=0.05, max_depth=5)
+    model = xgb.XGBRegressor(tree_method='hist', n_estimators=100, learning_rate=0.05, max_depth=5, n_jobs=-1)
     model.fit(train_data[features], train_data[target])
     
     # Make predictions on test data
@@ -64,11 +73,3 @@ def xgboost_predictions(data):
         st.plotly_chart(fig)
     
     plot_xgb_predictions(test_data[target], test_predictions)
-
-    st.markdown("""
-    **XGBoost Model:** XGBoost is an advanced gradient boosting machine learning algorithm that is quick and effective for predictive purpose. 
-                In this code, XGBoost is leveraged to predict stock closing prices by training the model using historical data along with the 
-                differences between high and low, day of the week, lagged closing prices and many other variables. The results obtained from the 
-                model are compared to real world data, helping to determine the efficiency of the model via MAPE and RMSE. 
-                This application shows how XGBoost can be applied to explore and predict time series data in this case of financial nature.
-    """)
